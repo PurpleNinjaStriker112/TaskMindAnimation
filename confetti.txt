@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f2b632;
+            animation: confetti-fall 2s infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(500px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="confetti-container"></div>
+    <script>
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confettiContainer.appendChild(confetti);
+            }
+            setTimeout(() => {
+                confettiContainer.innerHTML = '';
+            }, 2000);
+        }
+
+        function triggerConfetti() {
+            createConfetti();
+        }
+    </script>
+</body>
+</html>
